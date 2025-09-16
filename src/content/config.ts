@@ -36,3 +36,14 @@ export async function getunenrollments() {
   }
   return kernver;
 }
+
+export const kernvers = {
+  0: ["Any", "All Versions", "All Versions"],
+  1: ["1", "<v112", "All Versions"],
+  2: "v112-v119",
+  3: "v120-v123",
+  4: "v124-v132",
+  5: "v132-v137",
+  6: "v138+",
+  7: "v167+",
+};
