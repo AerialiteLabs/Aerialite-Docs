@@ -1,0 +1,21 @@
+---
+title: DPS
+description: Disable extensions that use Service Workers
+author: Shrey719
+kernver: 0
+---
+
+{frontmatter.description}<br/>
+{frontmatter.author && <small><i>By {frontmatter.author}</i><br/></small>}
+
+#### Requirements:
+Access to `chrome://serviceworker-internals`, and inspect element ***disabled***
+
+#### Steps:
+1. Go to `chrome://serviceworker-internals`.
+2. Click the checkbox that says `Open DevTools and pause JavaScript execution on Service Worker startup for debugging`
+3. Find the extension you want to disabled
+4. Click stop if it appears (otherwise, skip this step)
+5. Click unregister
+
+Works on: Blockfiletypes, LanSchool, GoGuardian, and likely several other untested extensions.

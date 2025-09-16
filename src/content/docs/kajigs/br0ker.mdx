@@ -1,0 +1,52 @@
+---
+title: Br0ker (<v138)
+description: Br0ker is an unenrollment exploit for Kernver 5 and below.
+author: OlyB
+keywords: ["unenrollment", "chromeos exploits", "kernver 5"]
+kernver: 5
+---
+
+{frontmatter.description}<br/>
+{frontmatter.author && <small><i>By {frontmatter.author}</i><br/></small>}
+
+It requires you to be on v132 or lower, which can be achieved by downgrading to v132 LTS. You can also get the bundled update with Sh1mmer, by building with it's [update payload](/kajigs/sh1mmer#update-payload)
+
+### How do I use Br0ker?
+Sh1mmer only:
+    1. Boot [Sh1mmer](/kajigs/sh1mmer), and use the Br0ker payload.
+
+BadApple + Sh1mmer:
+    1. Enter [BadApple](/kajigs/badapple)
+    2. Plug in your Sh1mmer USB drive
+    3. Find your USB device by running
+        ```
+        ls /dev/sd*
+        ```
+        and noting what shows up. (we'll use /dev/sdX as an example, replace it with your device.)
+    4. Run these commands:
+        ```
+        mkdir -p /mnt/sh1mmer
+        mount -o ro /dev/sdX /mnt/sh1mmer
+        sh /mnt/sh1mmer/root/noarch/payloads/br0ker.sh
+        ```
+
+Sh1ttyOOBE + BadRecovery + Sh1mmer (v135-137)
+    1. Perform [Sh1ttyOOBE](/kajigs/sh1ttyoobe), press [Esc+Ref+Pwr], and enter developer mode
+    2. Enter unverified [BadRecovery](/kajigs/badrecovery), ignore errors, and wait for the shell.
+    3. Once it fully loads, unplug the USB drive used for BadRecovery
+    4. Plug in your Sh1mmer USB drive
+    5. Find your USB device by running
+        ```
+        ls /dev/sd*
+        ```
+        and noting what shows up. (we'll use /dev/sdX as an example, replace it with your device.)
+    6. Run these commands:
+        ```
+        mkdir -p /mnt/sh1mmer
+        mount -o ro /dev/sdX /mnt/sh1mmer
+        sh /mnt/sh1mmer/root/noarch/payloads/br0ker.sh
+        ```
+
+Sh1ttyOOBE + BadBr0ker (v135-137)
+    1. Perform [Sh1ttyOOBE](/kajigs/sh1ttyoobe), press [Esc+Ref+Pwr], and enter developer mode
+    2. Enter [BadBr0ker](https://github.com/crosbreaker/badbr0ker?tab=readme-ov-file#i-have-a-usb-what-now)
