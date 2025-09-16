@@ -20,21 +20,6 @@ kernver: 0
 ## Prebuilts
 Prebuilts are located at https://dl.mrwork.shop/aurora
 ## Building
-### Dependencies
-Arch Linux:
-```
-sudo pacman -Sy wget curl gptfdisk rsync binwalk e2fsprogs
-yay -S vboot-utils
-```
-Debian:
-```
-sudo apt install wget curl bash e2fsprogs gdisk cgpt rsync vboot-utils
-```
-Alpine:
-```
-sudo apk add curl wget bash e2fsprogs gptfdisk sgdisk cgpt rsync vboot-utils
-```
-### Creating the image
 ```
 git clone https://github.com/AerialiteLabs/Aurora.git
 cd Aurora
