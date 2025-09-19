@@ -1,19 +1,28 @@
 ---
-title: Break your Chromebook
-description: Stop doing pencil
-keywords: ["unenrollment", "chromeos exploits", "any kernver", "stupid", "dumb", "you're a dumbass if you use this"]
+title: Pencil Method
+description: A somewhat risky CrOS unenrollment method that involves bridging two pins on the SPI flash chip of the motherboard. It is recommended that you do not use this.
+keywords: ["unenrollment", "any kernver"]
 kernver: 0
 unenrollment: true
+nolower: true
 ---
 
-"Stop doing pencil"<br/>
-<small>*-Rafflesia*</small>
+{frontmatter.link && (<><a href={frontmatter.link}>{frontmatter.link}</a><br/></>)}
+{frontmatter.description}<br/>
+{frontmatter.author && <small><i>By {frontmatter.author}</i><br/></small>}
+{frontmatter.nolower && (<>:::warning
+nugget
+:::</>) }
+
+> "Stop doing pencil"<br/>
+> <small>*-Rafflesia*</small>
+
+A somewhat risky CrOS unenrollment method that involves bridging two pins on the SPI flash chip of the motherboard. It is recommended that you do not use this.
 
 ### Requirements
 1. Screwdriver
 2. Conductive bendable object
 3. Sh1mmer USB
-4. However much money it takes to get a replacement Chromebook from your district
 
 ### Steps
 1. Open up your Chromebook using, most likely, a Phillips screwdriver. After that, disconnect the battery on the Chromebook. Methods to disconnect the connector may vary on each model.
@@ -23,9 +32,9 @@ unenrollment: true
 
     Please understand that the SOIC-8 chip, the one on the left, is much easier to bridge than the WSON-8 chip, the one on the right.
     :::
-    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/soic-8-chip.jpg" width="256"/><img src="/wson-8-chip.png" width="256"/></div>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/assets/soic-8-chip.jpg" width="256"/><img src="/assets/wson-8-chip.png" width="256"/></div>
 3. Now you’re going to have to use the picture(s) below as reference on what pins to bridge, as this is important. These are the charts for both of the chips:
-    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/soic-8-chart.png" width="256"/><img src="/wson-8-chart.png" width="256"/></div>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/assets/soic-8-chart.png" width="256"/><img src="/assets/wson-8-chart.png" width="256"/></div>
 4. “How do you bridge these pins?” This is where the supplies you got earlier comes into play, as they’ll be how you can bridge these pins.
 
     Take a piece of your conductive material and shape it into something that’s long enough to get to either side of the chip while being small enough to not make contact with multiple pins on either side of the chip. I cannot provide measurements as the chip size is different on each model.
@@ -38,7 +47,7 @@ unenrollment: true
     * Red: Conductive Material
     * Blue: Tape
 
-    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/soic-8-bridge.png" width="256"/><img src="/wson-8-bridge.png" width="256"/></div>
+    <div style="display: flex; flex-direction: row; justify-content: space-evenly;"><img src="/assets/soic-8-bridge.png" width="256"/><img src="/assets/wson-8-bridge.png" width="256"/></div>
 
 5. After the pins are securely bridged, you may plug in the charger (or the battery) alongside all the other necessary cables and boot the Chromebook. Once it has booted, boot into SH1MMER as you normally would. Disable OS verification (blocked or not), boot into the “Insert Recovery Media” screen, and plug in your SH1MMER USB or SD card.
 
@@ -53,6 +62,6 @@ unenrollment: true
 #### Dealing With An Update
 For those on v124 or newer, they changed cryptohome to device_management_client. However, this doesn’t remove FWMP due to “a weird quirk of the refactors” and will simply error upon running the command with —action=remove_firmware_management_parameters.
 
-Instead, you’ll need to downgrade ChromeOS to v123 (or lower) with developer mode on to bypass the “ChromeOS is out-of-date” error. If you don’t know how to downgrade, below are instructions that I’ve made.
+Instead, you’ll need to downgrade ChromeOS to v123 (or lower) with developer mode on to bypass the “ChromeOS is out-of-date” error. If you don’t know how to downgrade, visit the [Downgrading](https://docs.titaniumnetwork.org/kajigs/versions/#downloading-a-recovery-image) section of [Versions](https://docs.titaniumnetwork.org/kajigs/versions/).
 
-If recovery reports “An Unexpected Error Occured”, try a different version.
+If recovery reports “An unexpected error occurred”, try a different version.

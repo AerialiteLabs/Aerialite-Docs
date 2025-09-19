@@ -1,4 +1,4 @@
-import { defineCollection, z, getCollection } from "astro:content";
+import { defineCollection, getCollection, z } from "astro:content";
 import { docsSchema } from "@astrojs/starlight/schema";
 
 export const collections = {
@@ -10,29 +10,21 @@ export const collections = {
         "official-link": z.string().optional(),
         kernver: z.number().optional(),
         unenrollment: z.boolean().optional(),
+        nolower: z.boolean().optional(),
       }),
     }),
   }),
 };
 
-export async function getkajigs() {
-  const kajigs = ( await getCollection("docs")).filter((doc) => doc.id.startsWith("kajigs/") && doc.data.kernver !== undefined );
-  const kernver: Record<number, { title: string; slug: string }[]> = {};
+export async function getkajigs(u: boolean) {
+  const kajigs = ( await getCollection("docs")).filter((doc) => doc.id.startsWith("kajigs/") && doc.data.kernver !== undefined && (!u || doc.data.unenrollment === true));
+  const kernver: Record<number, { title: string; slug: string; color: string }[]> = {};
   for (const doc of kajigs) {
     const key = doc.data.kernver!;
+    let color = "default";
+    if (doc.data.nolower) color = "#FF69B4";
     if (!kernver[key]) kernver[key] = [];
-    kernver[key].push({ title: doc.data.title, slug: `/${doc.slug}` });
-  }
-  return kernver;
-}
-
-export async function getunenrollments() {
-  const kajigs = ( await getCollection("docs")).filter((doc) => doc.id.startsWith("kajigs/") && doc.data.kernver !== undefined  && doc.data.unenrollment === true );
-  const kernver: Record<number, { title: string; slug: string }[]> = {};
-  for (const doc of kajigs) {
-    const key = doc.data.kernver!;
-    if (!kernver[key]) kernver[key] = [];
-    kernver[key].push({ title: doc.data.title, slug: `/${doc.slug}` });
+    kernver[key].push({ title: doc.data.title, slug: `/${doc.slug}`, color: color });
   }
   return kernver;
 }

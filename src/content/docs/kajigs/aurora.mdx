@@ -5,7 +5,7 @@ author: soap phia
 keywords: ["tool", "ventoy", "any kernver", "aurora"]
 link: https://github.com/AerialiteLabs/Aurora
 sidebar:
-    order: 3
+    order: 4
 kernver: 0
 ---
 
@@ -19,23 +19,25 @@ kernver: 0
 - Booting other shims
 - Wifi connectivity
 
-## Prebuilts
+## Flashing
+
+First, obtain an image of Aurora.
+### Prebuilts
 Prebuilts are located at https://dl.mrwork.shop/aurora
-## Building
+### Building
 ```
 git clone https://github.com/AerialiteLabs/Aurora.git
 cd Aurora
 ```
 Run the next command with a raw shim or nanoshim
 ```
-sudo bash Aurora /path/to/shim.bin
+sudo bash Aurora -i /path/to/shim.bin
 ```
 Alternatively, you can automatically download a shim and build it with the following command:
 ```
 sudo bash Aurora <board> --auto
 ```
 
-## Flashing
 Linux: (Replace /dev/sdX with your flash drive/sd card)
 ```
 sudo dd if=/path/to/board-aurora.bin of=/dev/sdX bs=1M status=progress

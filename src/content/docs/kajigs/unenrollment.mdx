@@ -2,7 +2,7 @@
 title: Unenrollment
 description: List of Unenrollment exploits sorted by Kernver
 sidebar:
-  order: 1
+  order: 2
 ---
 
 {frontmatter.link && (<><a href={frontmatter.link}>{frontmatter.link}</a><br/></>)}
@@ -13,8 +13,8 @@ All Unenrollment exploits can be used on previous kernvers.
 
 For example, Br0ker can be used on any Kernver that can be used below 137, which would be Kernvers 1, 2, 3, 4, and 5.
 
-import { getunenrollments, kernvers } from '../../config.ts';
-export const kernver = await getunenrollments()
+import { getkajigs, kernvers } from '../../config.ts';
+export const kernver = await getkajigs(true)
 
 <table>
     <thead>
